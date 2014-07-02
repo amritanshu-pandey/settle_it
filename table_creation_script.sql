@@ -7,5 +7,10 @@ gender varchar(1),
 email varchar(100),
 mobile numeric);
 
+create table groups(
+gid integer primary key auto_increment,
+gname varchar(100)
+);
+
 
 
