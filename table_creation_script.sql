@@ -12,5 +12,10 @@ gid integer primary key auto_increment,
 gname varchar(100)
 );
 
+create table group_members(
+gid integer references groups(gid),
+mid integer references users(id),
+active boolean);
+
 
 
