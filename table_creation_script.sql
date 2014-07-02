@@ -17,5 +17,23 @@ gid integer references groups(gid),
 mid integer references users(id),
 active boolean);
 
+create table transactions(
+tran_id integer primary key auto_increment,
+tran_date date not null,
+description varchar(1000) not null,
+lender integer not null references users(id),
+borrower integer  not null references users(id),
+is_borrower_group boolean not null
+);
 
+create table tran_splits_indiv(
+tid integer not null references transactions(tran_id),
+p_tid integer primary key auto_increment,
+borrower integer not null references users(id),
+paid boolean not null);
 
+create table tran_splits_indiv(
+tid integer not null references transactions(tran_id),
+g_tid integer primary key auto_increment,
+borrower integer not null references groups(gid),
+paid boolean not null);
