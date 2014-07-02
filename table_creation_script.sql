@@ -32,7 +32,7 @@ p_tid integer primary key auto_increment,
 borrower integer not null references users(id),
 paid boolean not null);
 
-create table tran_splits_indiv(
+create table tran_splits_group(
 tid integer not null references transactions(tran_id),
 g_tid integer primary key auto_increment,
 borrower integer not null references groups(gid),
