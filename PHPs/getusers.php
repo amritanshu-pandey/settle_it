@@ -1,4 +1,5 @@
 <?php
+include('functions.php');
 $conn=mysql_connect("localhost","root","");
 mysql_selectdb("studies",$conn);
 $json='';
@@ -8,7 +9,7 @@ if(empty($_GET['id'])){
 else
 {
 	$result=array();
-	$uid=isset($_GET['id'])?mysql_real_escape_string($_GET['id']):"";
+	$uid=isset($_GET['id'])?mysql_real_escape_string(test_input($_GET['id'])):"";
 	$query=mysql_query("select id,name,gender,email,mobile from users where id='$uid';");
 	if($r=mysql_fetch_array($query)){
 		extract($r);
@@ -23,3 +24,4 @@ else
 header('Content-Type: application/json');
 
 echo json_encode($json);
+?>
